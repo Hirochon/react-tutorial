@@ -1,12 +1,12 @@
 version: "3.3"
 services:
   react:
-    image: node:12.17.0
+    build: ./
     working_dir: /code
     volumes:
-      - .:/code
+      - ./my-app:/code
     ports:
       - 3000:3000
     environment: 
       - NODE_ENV=production
-    container_name: react_tutorial
+    container_name: tutorial
