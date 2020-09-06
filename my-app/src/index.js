@@ -198,17 +198,17 @@ const Game = () => {
   const [xIsNext, setxIsNext] = useState(true);
 
   const handleClick = (i) => {
-    const historyUntilCurrentStep = history.slice(0, stepNumber + 1);
-    const current = historyUntilCurrentStep[historyUntilCurrentStep.length - 1];
+    const handlehistory = history.slice(0, stepNumber + 1);
+    const current = handlehistory[handlehistory.length - 1];
     const squares = current.squares.slice();   // slice()でコピーを作成 pythonで言うlist[:]みたいなもん。
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
     squares[i] = xIsNext ? 'X': 'O';
-    setHistory(historyUntilCurrentStep.concat([{
+    setHistory(handlehistory.concat([{
       squares: squares,
     }]));
-    setstepNumber(historyUntilCurrentStep.length);
+    setstepNumber(handlehistory.length);
     setxIsNext(!xIsNext);
   }
 
@@ -217,7 +217,8 @@ const Game = () => {
     setxIsNext((step % 2) === 0);
   };
 
-  const winner = calculateWinner(history[stepNumber].squares);
+  const current = history[stepNumber]
+  const winner = calculateWinner(current.squares);
 
   const moves = history.map((step, move) => {
     const desc = move ?
@@ -242,7 +243,7 @@ const Game = () => {
     <div className="game">
       <div className="game-board">
         <Board 
-          squares={history[stepNumber].squares}
+          squares={current.squares}
           onClick={(i) => handleClick(i)}
         />
       </div>
