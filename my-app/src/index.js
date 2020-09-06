@@ -28,8 +28,8 @@ class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square 
-        value={this.props.squares[i]}         // 一番目とか
-        onClick={() => this.props.onClick(i)}   // 二番めとかは関係ない。onClickでのstateの変化をvalueで表示を変える。
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}   // onClickでvalueで表示を変える。
       />
     );
   }
