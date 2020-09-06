@@ -4,8 +4,8 @@ services:
     image: node:12.17.0
     working_dir: /code
     volumes:
-      # - ./ts-my-app:/code
-      - ./my-app:/code
+      - ./ts-my-app:/code
+      # - ./my-app:/code
     ports:
       - 3000:3000
     environment: 
